@@ -1,22 +1,3 @@
-def pprint(grid) :
-	for i in range(9) :
-		for j in range(9) :
-			print(grid[i][j],end = " ")
-			if(j == 2 or j == 5) :
-				print("|",end = " ")
-		if(i == 2 or i == 5) :
-			print()
-			print("---------------------")
-		else :
-			print()
-def getrange(x) :
-	if(x >= 0 and x <= 2) :
-		return (0,2)
-	elif(x >= 3 and x <= 5) :
-		return (3,5)
-	else :
-		return (6,8)
-
 def next(grid,x,y) :
 	if(y == 8) :
 		return solve(grid,x+1,0)
@@ -25,7 +6,6 @@ def next(grid,x,y) :
 
 def solve(grid,x,y) :
 	if(x > 8) :
-		pprint(grid)
 		return True
 	
 	if(grid[x][y] != 0) :
@@ -53,10 +33,7 @@ def solve(grid,x,y) :
 			return True
 	grid[x][y] = 0
 	return False
- 
-grid = [list(map(int,input().split())) for i in range(9)]
-print("\nInput puzzle\n")
-pprint(grid)
+
 x,y = -1,-1
 for i in range(9) :
 	for j in range(9) :
