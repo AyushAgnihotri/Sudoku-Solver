@@ -51,6 +51,7 @@ def findBlank(grid) :
 				break
 		if((x,y) != (-1,-1)) :
 				break
+	return (x,y)
 
 def bruteForce(grid) :
 

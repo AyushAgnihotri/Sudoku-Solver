@@ -1,9 +1,9 @@
-def output(grid,myfile) :
+def outputGrid(grid,myfile) :
 
 	solution = open(myfile,'w')
-	pprint(grid,myfile)
+	pprintToFile(grid,solution)
 
-def pprint(grid,myfile) :
+def pprintToFile(grid,myfile) :
 	for i in range(9) :
 		for j in range(9) :
 			print(grid[i][j],end = " ",file = myfile)
@@ -15,7 +15,7 @@ def pprint(grid,myfile) :
 		else :
 			print("",file = myfile)
 
-def pprint(grid) :
+def pprintToScreen(grid) :
 	for i in range(9) :
 		for j in range(9) :
 			print(grid[i][j],end = " ")
