@@ -34,16 +34,22 @@ def solve(grid,x,y) :
 	grid[x][y] = 0
 	return False
 
-x,y = -1,-1
-for i in range(9) :
-	for j in range(9) :
-		if(grid[i][j] == 0) :
-			x,y = i,j
-			break
-	if((x,y) != (-1,-1)) :
-			break
-print("\noutput puzzle\n")
-solve(grid,x,y)
+def findBlank(grid) :
+	x,y = -1,-1
+	for i in range(9) :
+		for j in range(9) :
+			if(grid[i][j] == 0) :
+				x,y = i,j
+				break
+		if((x,y) != (-1,-1)) :
+				break
+
+def bruteForce(grid) :
+
+	(x,y) = findBlank(grid)
+	solve(grid,x,y)
+	return grid
+	
 """
 sample input 1. -- source (http://www.puzzles.ca/sudoku_puzzles/sudoku_easy_327.html)
 	
