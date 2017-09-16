@@ -41,15 +41,6 @@ def fitness(grid):
 					count = count +1
 				if grid[getrow(i,k)][getcol(i,k)] == grid[getrow(j,k)][getcol(j,k)]:
 					count = count + 1
-	'''for i in range(9):
-		for j in range(9):
-			x = i, y = j
-			for k in range(3):
-				x = (x+3)%9
-				for l in range(3):
-					y = (y+3)%9
-					if grid[i][j] == grid[x][y]:
-						count = count+1'''
 	return count
 
 def change(grid):
