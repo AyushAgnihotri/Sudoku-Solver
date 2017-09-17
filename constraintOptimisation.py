@@ -37,13 +37,15 @@ def variableOrder(grid) :
 	for i in range(9) :
 		for j in range(9) :
 			if(grid[i][j] == 0) :
-				heappush(l,(len(calDomain(grid,i,j)),i,j))
+				l.append((len(calDomain(grid,i,j)),i,j))
+	l = sorted(l,key = lambda x : x[0])
+	l = [(i[1],i[2]) for i in l]
 	return l
 
 def solve(grid,l,index) :
 	if(index >= len(l)) :
 		return True	
-	x,y = l[index][1],l[index][2]
+	x,y = l[index][0],l[index][1]
 
 	s = calDomain(grid,x,y)
 	if(len(s) == 0) :
