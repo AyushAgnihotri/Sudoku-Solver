@@ -1,4 +1,3 @@
-from queue import heappush
 #this is static , try dynamic too
 def getrange(x) :
 	if(x >= 0 and x <= 2) :
@@ -32,12 +31,34 @@ def calDomain(grid,x,y) :
 	
 	return s
 
+def pref(grid,x,y) :
+	
+	(r0,r1) = getrange(x)
+	(c0,c1) = getrange(y)
+	
+	s = set()
+	ct = 0
+	for i in range(r0,r1+1) :
+		for j in range(c0,c1+1) :
+			if(grid[i][j] != 0) :
+				s.add(grid[i][j])
+				ct += 17
+
+	for i in range(9) :
+		if(grid[x][i] != 0):
+			s.add(grid[x][i])
+			ct += 8
+	for i in range(9) :
+		if(grid[i][y] != 0) :
+			s.add(grid[i][y])
+			ct += 4
+	return 9 - len(s) - ct
 def variableOrder(grid) :
 	l = []
 	for i in range(9) :
 		for j in range(9) :
 			if(grid[i][j] == 0) :
-				l.append((len(calDomain(grid,i,j)),i,j))
+				l.append((pref(grid,i,j),i,j))
 	l = sorted(l,key = lambda x : x[0])
 	l = [(i[1],i[2]) for i in l]
 	return l
