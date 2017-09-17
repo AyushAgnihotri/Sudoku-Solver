@@ -42,16 +42,16 @@ def pref(grid,x,y) :
 		for j in range(c0,c1+1) :
 			if(grid[i][j] != 0) :
 				s.add(grid[i][j])
-				ct += 17
+				ct += 20
 
 	for i in range(9) :
 		if(grid[x][i] != 0):
 			s.add(grid[x][i])
-			ct += 8
+			ct += 7
 	for i in range(9) :
 		if(grid[i][y] != 0) :
 			s.add(grid[i][y])
-			ct += 4
+			ct += 3
 	return 9 - len(s) - ct
 def variableOrder(grid) :
 	l = []
