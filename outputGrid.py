@@ -1,7 +1,10 @@
-def outputGrid(grid,myfile) :
+def outputGrid(grid,t,myfile) :
 
 	solution = open(myfile,'w')
 	pprintToFile(grid,solution)
+	print(file = solution)
+	print("time = ",t,file = solution)
+
 
 def pprintToFile(grid,myfile) :
 	for i in range(9) :

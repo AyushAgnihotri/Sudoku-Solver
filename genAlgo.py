@@ -1,6 +1,8 @@
 
 from random import randint,random,shuffle 
 import copy
+from printPuzzle import pprint
+#from constraintOptimisation import calDomain
 
 def individual(grid):
 	
@@ -43,6 +45,12 @@ def fitness(grid):
 					count = count + 1
 			count -= 2
 	return count
+def invertChange(grid) :
+	mat = [[0]*9 for i in range(9)]
+	for i in range(9) :
+		for j in range(9) :
+			mat[getrow(i,j)][getcol(i,j)] = grid[i][j]
+	return mat 
 
 def change(grid):
 	mat = []
@@ -70,11 +78,11 @@ def crossover(parent,grid,pop_size):
 
 
 def mutate(parent,grid) :
-	mutation = 0.05
-	for i in parent :
+	mutation = 0.02
+	for i in parent:
 		if(mutation > random()) :
 			for subgrid in range(9) :
-				for count in range(6) :
+				for count in range(3) :
 					pos1 = randint(0,8)
 					pos2 = randint(0,8)
 					if(grid[subgrid][pos2] == 0 and grid[subgrid][pos1] == 0) :
@@ -84,10 +92,15 @@ def evolve(pop,grid) :
 
 	pop = [(fitness(i),i) for i in pop]
 	pop = sorted(pop, key = lambda x : x[0])
+	print("output")
+	print(pop[0][0])
+	#pprint(invertChange(pop[0][1]))
+	print()
 	pop = [i[1] for i in pop ]
 	pop_size = len(pop)
 	parent = pop[:int(0.2*pop_size)]
-	random_select = 0.05
+	#fine_len = len(parent)
+	random_select = 0.2
 	for i in pop[int(0.2*pop_size) : ] :
 		if(random_select > random()) :
 			parent.append(i)
@@ -104,8 +117,8 @@ def grade(pop) :
 def genAlgo(grid) :
 
 	mat = change(grid)
-	pop = population(mat,100)
-	for i in range(10) :
+	pop = population(mat,10)
+	for i in range(100) :
 		pop = evolve(pop,mat)
-		print("fitnes of gen ",i," : ",grade(pop))
+		#print("fitnes of gen ",i," : ",grade(pop))
 	return grid
