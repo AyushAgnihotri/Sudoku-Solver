@@ -41,6 +41,7 @@ def fitness(grid):
 					count = count +1
 				if grid[getrow(i,k)][getcol(i,k)] == grid[getrow(j,k)][getcol(j,k)]:
 					count = count + 1
+			count -= 2
 	return count
 
 def change(grid):
@@ -52,15 +53,15 @@ def change(grid):
 				for j in range(k,k+3):
 					temp.append(grid[i][j])
 			mat.append(temp)
-return mat 
+	return mat 
 
 def crossover(parent,grid,pop_size):
 	children = []
 	pop_size = pop_size - len(parent)
 	for i in range(pop_size) :
-		father = randint(0,len(parent))
-		mother = randint(0,len(parent))
-		cross = randint(0,9)
+		father = parent[randint(0,len(parent)-1)]
+		mother = parent[randint(0,len(parent)-1)]
+		cross = randint(0,8)
 		child = father[ :cross] + mother[cross :]
 		children.append(child)
 	
@@ -74,27 +75,37 @@ def mutate(parent,grid) :
 		if(mutation > random()) :
 			for subgrid in range(9) :
 				for count in range(6) :
-					pos1 = randint(0,9)
-					pos2 = randint(0,9)
+					pos1 = randint(0,8)
+					pos2 = randint(0,8)
 					if(grid[subgrid][pos2] == 0 and grid[subgrid][pos1] == 0) :
 						i[subgrid][pos1],i[subgrid][pos2] = i[subgrid][pos2],i[subgrid][pos1]
 
 def evolve(pop,grid) :
 
 	pop = [(fitness(i),i) for i in pop]
-	pop = sorted(l, key = lambda x : x[0])
+	pop = sorted(pop, key = lambda x : x[0])
 	pop = [i[1] for i in pop ]
 	pop_size = len(pop)
-	parent = pop[:0.2*pop_size]
+	parent = pop[:int(0.2*pop_size)]
 	random_select = 0.05
-	for i in pop[0.2*pop_size : ] :
+	for i in pop[int(0.2*pop_size) : ] :
 		if(random_select > random()) :
 			parent.append(i)
 
 	mutate(parent,grid)
 	return crossover(parent,grid,pop_size)
 
+def grade(pop) :
+	grade = 0
+	for i in pop :
+		grade += fitness(i)
+	return grade/len(pop)
 
 def genAlgo(grid) :
 
-	pop = population(change(grid),100)
+	mat = change(grid)
+	pop = population(mat,100)
+	for i in range(10) :
+		pop = evolve(pop,mat)
+		print("fitnes of gen ",i," : ",grade(pop))
+	return grid
