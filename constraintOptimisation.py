@@ -38,41 +38,34 @@ def getGridRange(x) :
 def getGridNo(x,y):
 	return int(x/3)*3 + int(y/3)
 
-def pref(grid) :
+def pref(grid,x,y) :
 	
-	row = {}
-	col = {}	
-	subgrid = {}
-	for g in range(9) :
-		((r0,r1),(c0,c1)) = getGridRange(g)
-		subgrid[g] = set()
-		for i in range(r0,r1+1) :
-			for j in range(c0,c1+1) :
-				if(grid[i][j] != 0) :
-					subgrid[g].add(grid[i][j])
-			
-	for c in range(9) :
-		col[c] = set()
-		for i in range(9) :
-			if(grid[i][c] != 0):
-				col[c].add(grid[i][c])
-			
-	for r in range(9) :
-		row[r] = set()
-		for i in range(9) :
-			if(grid[r][i] != 0) :
-				row[r].add(grid[r][i])
-				
-	return (subgrid,row,col)
+	(r0,r1) = getrange(x)
+	(c0,c1) = getrange(y)
+	
+	s = set()
+	ct = 0
+	for i in range(r0,r1+1) :
+		for j in range(c0,c1+1) :
+			if(grid[i][j] != 0) :
+				s.add(grid[i][j])
+				ct += 20
 
+	for i in range(9) :
+		if(grid[x][i] != 0):
+			s.add(grid[x][i])
+			ct += 7
+	for i in range(9) :
+		if(grid[i][y] != 0) :
+			s.add(grid[i][y])
+			ct += 3
+	return 9 - len(s) - ct
 def variableOrder(grid) :
 	l = []
-	(subgrid,row,col) = pref(grid)
 	for i in range(9) :
 		for j in range(9) :
 			if(grid[i][j] == 0) :
-				l.append((-19*len(subgrid[getGridNo(i,j)]) - 10*len(col[j]) - 7*len(row[i]) ,i,j))
-
+				l.append((pref(grid,i,j),i,j))
 	l = sorted(l,key = lambda x : x[0])
 	l = [(i[1],i[2]) for i in l]
 	return l

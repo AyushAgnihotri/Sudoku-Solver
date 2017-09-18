@@ -60,4 +60,4 @@ class SudokuSolver :
 		self.printStats(method,solution,t)
 
 	
-SudokuSolver().run(5,1)
+SudokuSolver().run(5,2)
