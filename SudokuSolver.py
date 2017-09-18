@@ -5,6 +5,7 @@ from constraintOptimisation import constraintOptimisation
 from genAlgo import genAlgo
 import time
 import copy
+import sys
 
 
 class SudokuSolver :
@@ -60,4 +61,4 @@ class SudokuSolver :
 		self.printStats(method,solution,t)
 
 	
-SudokuSolver().run(5,2)
+SudokuSolver().run(5,int(sys.argv[1]))

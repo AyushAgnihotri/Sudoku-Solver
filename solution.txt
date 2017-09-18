@@ -11,12 +11,12 @@ Output
 9 8 4 | 7 6 1 | 2 3 5 
 5 2 1 | 8 3 9 | 7 6 4 
 
-Method :  Constraint Optimisation (Backtracking)
+Method :  Brute Force (Exhaustive Search)
 
-time  0  =  0.126871
-time  1  =  0.126739
-time  2  =  0.12677699999999997
-time  3  =  0.13463399999999992
-time  4  =  0.13368900000000006
-Mean of  5  runs =  0.129742
-Standard deviation of  5  runs =  6.556234799999982e-05
+time  0  =  0.195038
+time  1  =  0.20709300000000003
+time  2  =  0.20981899999999998
+time  3  =  0.19777699999999987
+time  4  =  0.19725199999999998
+Mean of  5  runs =  0.20139579999999996
+Standard deviation of  5  runs =  0.00017409679880000116
