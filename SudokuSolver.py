@@ -61,4 +61,4 @@ class SudokuSolver :
 		self.printStats(method,solution,t)
 
 	
-SudokuSolver().run(5,int(sys.argv[1]))
+SudokuSolver().run(int(sys.argv[1]),int(sys.argv[2]))

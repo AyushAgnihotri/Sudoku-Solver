@@ -13,10 +13,8 @@ Output
 
 Method :  Brute Force (Exhaustive Search)
 
-time  0  =  0.195038
-time  1  =  0.20709300000000003
-time  2  =  0.20981899999999998
-time  3  =  0.19777699999999987
-time  4  =  0.19725199999999998
-Mean of  5  runs =  0.20139579999999996
-Standard deviation of  5  runs =  0.00017409679880000116
+time  0  =  0.196577
+time  1  =  0.19744
+time  2  =  0.20062899999999995
+Mean of  3  runs =  0.19821533333333333
+Standard deviation of  3  runs =  9.111064666666395e-06
