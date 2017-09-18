@@ -29,10 +29,10 @@ def population( grid, k ):
 	return pop
 
 def getrow(i,j):
-	return int((i/3))*3 + int(j/3)
+	return int(i/3)*3 + int(j/3)
 
 def getcol(i,j):
- 	return int((i%3))*3 + j%3
+ 	return int(i%3)*3 + j%3
 
 def fitness(grid):
 	count = 0
