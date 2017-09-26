@@ -1,8 +1,8 @@
-from inputGrid import inputGrid
-from outputGrid import outputGrid
-from bruteForce import bruteForce
-from constraintOptimisation import constraintOptimisation
-from genAlgo import genAlgo
+from utility.inputGrid import inputGrid
+from utility.outputGrid import outputGrid
+from algorithms.bruteForce import bruteForce
+from algorithms.constraintOptimisation import constraintOptimisation
+from algorithms.genAlgo import genAlgo
 import time
 import copy
 import sys
